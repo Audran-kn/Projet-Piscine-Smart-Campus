@@ -1,34 +1,67 @@
 // ============================================================
-// SmartCampus - V2 Intégration Graphique (Sans React Router)
+// SmartCampus - V3 Logique React et Composants (Routage temporaire)
 // ============================================================
 
-// Version HTML/JS classique injectée pour tester le visuel Bootstrap.
-// On n'utilise pas encore le JSX complexe pour éviter que tout crash sans Babel.
-function HomePage() {
-    return React.createElement(
-        'div',
-        { className: 'min-vh-100 d-flex flex-column bg-light' },
-        
-        // Hero Section
-        React.createElement('section', { className: 'hero-section text-white py-5 text-center' },
-            React.createElement('div', { className: 'container py-5' },
-                React.createElement('h1', { className: 'display-3 fw-bold' }, 'SmartCampus'),
-                React.createElement('p', { className: 'lead' }, 'La gestion académique de notre époque'),
-                React.createElement('div', { className: 'd-flex gap-3 justify-content-center mt-4' },
-                    // LIENS MORTS : Les boutons utilisent des "#" pour l'instant
-                    React.createElement('a', { href: '#', className: 'btn btn-light btn-lg' }, 'Se connecter'),
-                    React.createElement('a', { href: '#', className: 'btn btn-outline-light btn-lg' }, 'S\'inscrire')
-                )
-            )
-        ),
+const { useState, useEffect } = React;
+const { BrowserRouter, Routes, Route, Link } = ReactRouterDOM;
 
-        // Section d'information basique
-        React.createElement('section', { className: 'container py-5 flex-grow-1' },
-            React.createElement('h2', { className: 'text-center mb-4 text-primary' }, 'Une plateforme en cours de développement'),
-            React.createElement('p', { className: 'text-center text-muted' }, 'Le système de routage et les espaces utilisateurs seront intégrés au prochain commit.')
-        )
+function HomePage() {
+    return (
+        <div className="min-vh-100 d-flex flex-column">
+            {/* Hero Section */}
+            <section className="hero-section text-white py-5">
+                <div className="container py-5 text-center">
+                    <h1 className="display-3 fw-bold mb-3">SmartCampus</h1>
+                    <p className="lead mb-4">La gestion académique de notre époque</p>
+                    <div className="d-flex gap-3 justify-content-center">
+                        {/* Utilisation de la balise Link de React Router */}
+                        <Link to="/login" className="btn btn-light btn-lg">Se connecter</Link>
+                        <Link to="/register" className="btn btn-outline-light btn-lg">S'inscrire</Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* Features intégrées sous forme de composants */}
+            <section className="py-5 bg-light flex-grow-1">
+                <div className="container py-5">
+                    <div className="row g-4">
+                        <FeatureCard icon="bi-people-fill" color="primary" title="Étudiants" text="Accès aux cours et notes." />
+                        <FeatureCard icon="bi-book-fill" color="success" title="Enseignants" text="Saisie des notes et gestion." />
+                        <FeatureCard icon="bi-gear-fill" color="danger" title="Administration" text="Pilotage global de l'école." />
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+}
+
+function FeatureCard({ icon, color, title, text }) {
+    return (
+        <div className="col-md-4">
+            <div className="card h-100 border-0 shadow-sm text-center p-4">
+                <div className={`text-${color} mb-3`}><i className={`bi ${icon}`} style={{fontSize: '2.5rem'}}></i></div>
+                <h4 className="fw-bold">{title}</h4>
+                <p className="text-muted mb-0">{text}</p>
+            </div>
+        </div>
+    );
+}
+
+// Pages temporaires : Il manque encore le bouton de retour à l'accueil et le design final
+function LoginPage() { return <div className="p-5"><h2>Page de connexion</h2><p>En cours de création...</p></div>; }
+function RegisterPage() { return <div className="p-5"><h2>Page d'inscription</h2><p>En cours de création...</p></div>; }
+
+function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(React.createElement(HomePage));
+root.render(<App />);
