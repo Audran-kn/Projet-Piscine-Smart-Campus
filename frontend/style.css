@@ -1,18 +1,31 @@
-/* SmartCampus - V1 - Feuille de style temporaire */
+/* ============================================================
+   SmartCampus - V2 Feuille de style avec charte graphique ECE
+   ============================================================ */
+
+:root {
+    /* Couleurs principales demandées */
+    --sc-primary: #1E3A8A;          /* Bleu marine profond */
+    --sc-primary-alt: #2563EB;      /* Bleu vif */
+    --sc-bg-light: #F8FAFC;
+    --sc-radius: 12px;
+}
+
 body {
-    font-family: sans-serif;
-    color: #333;
-    margin: 0;
-    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--sc-bg-light);
 }
 
-h1 {
-    color: blue; /* Pas encore la charte graphique de l'école */
+/* Surcharge des composants Bootstrap avec nos couleurs */
+.text-primary {
+    color: var(--sc-primary) !important;
 }
 
-/* ERREUR : Pas de gestion du responsive ni de flexbox pour l'instant */
-.card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
+.btn-primary {
+    background-color: var(--sc-primary);
+    border-color: var(--sc-primary);
+}
+
+/* Design de la bannière principale */
+.hero-section {
+    background: linear-gradient(135deg, var(--sc-primary) 0%, var(--sc-primary-alt) 100%);
 }
