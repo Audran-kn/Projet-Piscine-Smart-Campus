@@ -1,0 +1,18 @@
+/* SmartCampus - V1 - Feuille de style temporaire */
+body {
+    font-family: sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: blue; /* Pas encore la charte graphique de l'école */
+}
+
+/* ERREUR : Pas de gestion du responsive ni de flexbox pour l'instant */
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
