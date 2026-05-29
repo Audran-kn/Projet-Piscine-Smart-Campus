@@ -1,31 +1,29 @@
 /* ============================================================
-   SmartCampus - V2 Feuille de style avec charte graphique ECE
+   SmartCampus - V3 Charte graphique et effets de survol
    ============================================================ */
 
 :root {
-    /* Couleurs principales demandées */
-    --sc-primary: #1E3A8A;          /* Bleu marine profond */
-    --sc-primary-alt: #2563EB;      /* Bleu vif */
+    --sc-primary: #1E3A8A;
+    --sc-primary-alt: #2563EB;
     --sc-bg-light: #F8FAFC;
     --sc-radius: 12px;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--sc-bg-light);
 }
 
-/* Surcharge des composants Bootstrap avec nos couleurs */
-.text-primary {
-    color: var(--sc-primary) !important;
-}
-
-.btn-primary {
-    background-color: var(--sc-primary);
-    border-color: var(--sc-primary);
-}
-
-/* Design de la bannière principale */
 .hero-section {
     background: linear-gradient(135deg, var(--sc-primary) 0%, var(--sc-primary-alt) 100%);
+}
+
+/* AJOUT : Effet d'animation lors du survol des cartes pour montrer le dynamisme du CSS */
+.card {
+    border-radius: var(--sc-radius);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
